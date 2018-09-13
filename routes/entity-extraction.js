@@ -1,11 +1,3 @@
-/*
- * decaffeinate suggestions:
- * DS101: Remove unnecessary use of Array.from
- * DS102: Remove unnecessary code created because of implicit returns
- * Full docs: https://github.com/decaffeinate/decaffeinate/blob/master/docs/suggestions.md
- */
-
-// Require necessary modules, API keys and instantiate objects
 const Tweet = require("../models/Tweet"); // The Tweet model
 const FetchTweets = require("fetch-tweets");
 const twitterKey = require("../config/keys").twitter;
@@ -77,7 +69,7 @@ const makeSankeyData = function(startNode, data) {
 router.get("/", (req, res, next) =>
   Tweet.getAllTweets(tweets =>
     entityExtraction(formatTweets(tweets), hpKey, results =>
-      res.render("page_entityExtraction", {
+      res.send({
         title: "Entity Extraction",
         pageNum: 8,
         data: results,
@@ -93,7 +85,7 @@ router.get("/:query", function(req, res) {
   const searchTerm = req.params.query.toLowerCase(); // Get the search term of URL param
   return fetchTweets.byTopic(searchTerm, tweets =>
     entityExtraction(formatTweets(tweets), hpKey, results =>
-      res.render("page_entityExtraction", {
+      res.render({
         title: searchTerm + " | Entity Extraction",
         pageNum: 8,
         data: results,

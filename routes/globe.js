@@ -10,7 +10,7 @@ const mapTweetFormatter = require("../utils/format-tweets-for-map");
 
 // Render to page
 const render = (res, data, title, summaryTxt) =>
-  res.render("page_globe", {
+  res.send({
     // Call res.render for the map page
     data, // The map data
     summary_text: summaryTxt, // Summary of results

@@ -32,6 +32,8 @@ const mainRoute = require("./routes/home");
 const searchRoutes = require("./routes/search");
 const formattedRoutes = require("./routes/break-down");
 const compareRoutes = require("./routes/comparer");
+const entityRoutes = require("./routes/entity-extraction");
+const globeRoutes = require("./routes/globe");
 
 // Connect to db
 mongoose.connect(
@@ -48,6 +50,8 @@ app.use("/home", mainRoute);
 app.use("/search", searchRoutes);
 app.use("/format", formattedRoutes);
 app.use("/compare", compareRoutes);
+app.use("/entity", entityRoutes);
+app.use("/globe", globeRoutes);
 app.use("/text-tweets", require("./routes/text-tweet"));
 
 // Create home route
