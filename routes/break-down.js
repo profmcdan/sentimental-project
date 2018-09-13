@@ -79,7 +79,7 @@ router.get("/:query", function(req, res) {
   return fetchAndFormatTweets(searchTerm, tweetBody =>
     getHpSentimentResults(tweetBody, function(hpResults) {
       const results = formatResultsForChart(hpResults);
-      return res.render("page_breakDown", {
+      return res.send({
         title: searchTerm + " results",
         pageNum: -1,
         data: results,

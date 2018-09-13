@@ -112,5 +112,5 @@ const latest = new NlScraper();
 // Listen to a port number
 app.listen(app.get("port"), () => {
   console.log("Listening on port " + app.get("port"));
-  // console.log(sentimentAnalysis("It was a catastrophic disaster"));
+  // console.log(sentimentAnalysis(words));
 });

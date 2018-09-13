@@ -11,6 +11,7 @@
   "dependencies": {
     "body-parser": "^1.18.3",
     "cookie-parser": "^1.4.3",
+    "crawler": "^1.2.0",
     "express": "^4.16.3",
     "fetch-tweets": "^0.1.7",
     "haven-entity-extraction": "git://github.com/Lissy93/haven-entity-extraction.git",
