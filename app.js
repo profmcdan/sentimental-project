@@ -34,6 +34,9 @@ const formattedRoutes = require("./routes/break-down");
 const compareRoutes = require("./routes/comparer");
 const entityRoutes = require("./routes/entity-extraction");
 const globeRoutes = require("./routes/globe");
+const hexagonRoutes = require("./routes/hexagons");
+const mapRoutes = require("./routes/map");
+const regionMapRoutes = require("./routes/region-map");
 
 // Connect to db
 mongoose.connect(
@@ -52,6 +55,9 @@ app.use("/format", formattedRoutes);
 app.use("/compare", compareRoutes);
 app.use("/entity", entityRoutes);
 app.use("/globe", globeRoutes);
+app.use("/hexagon", hexagonRoutes);
+app.use("/map", mapRoutes);
+// app.use("/region", regionMapRoutes);
 app.use("/text-tweets", require("./routes/text-tweet"));
 
 // Create home route

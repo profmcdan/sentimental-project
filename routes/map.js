@@ -28,7 +28,7 @@ const renderAllData = res =>
   mapTweetFormatter.getDbData((data, txt) => render(res, data, "Map", txt));
 
 // Path for main map root page
-router.get("/", (req, res) => renderAllData(res));
+// router.get("/", (req, res) => renderAllData(res));
 
 // Path for map sub-page
 router.get("/:query", function(req, res) {

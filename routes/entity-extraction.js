@@ -66,7 +66,7 @@ const makeSankeyData = function(startNode, data) {
 };
 
 // Main route - no search term
-router.get("/", (req, res, next) =>
+router.get("/", (req, res) =>
   Tweet.getAllTweets(tweets =>
     entityExtraction(formatTweets(tweets), hpKey, results =>
       res.send({
@@ -85,7 +85,7 @@ router.get("/:query", function(req, res) {
   const searchTerm = req.params.query.toLowerCase(); // Get the search term of URL param
   return fetchTweets.byTopic(searchTerm, tweets =>
     entityExtraction(formatTweets(tweets), hpKey, results =>
-      res.render({
+      res.send({
         title: searchTerm + " | Entity Extraction",
         pageNum: 8,
         data: results,

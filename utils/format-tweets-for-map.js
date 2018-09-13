@@ -47,8 +47,8 @@ var FormatTweetsForMap = (function() {
             mapData.push({
               sentiment: tweet.sentiment,
               location: {
-                // lat: blurLocationData(tweet.location.location.lat),
-                // lng: blurLocationData(tweet.location.location.lng)
+                lat: blurLocationData(tweet.location.location.lat),
+                lng: blurLocationData(tweet.location.location.lng)
               },
               tweet: tweet.body
             });

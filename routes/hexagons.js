@@ -15,7 +15,7 @@ router.get("/", (req, res, next) =>
     results,
     average // Fetch all data
   ) =>
-    res.render("page_hexagons", {
+    res.send({
       // Render template
       title: "Sentiment Hexagons",
       pageNum: 9,
@@ -33,9 +33,9 @@ router.get("/:query", function(req, res) {
     results,
     average // Fetch all data
   ) =>
-    res.render("page_hexagons", {
+    res.send({
       // Render template
-      title: searchTerm + " hex results",
+      title: searchTerm + " Hexagons results",
       pageNum: 9,
       data: results,
       averageSentiment: average,

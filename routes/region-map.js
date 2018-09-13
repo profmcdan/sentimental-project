@@ -1,10 +1,3 @@
-/*
- * decaffeinate suggestions:
- * DS101: Remove unnecessary use of Array.from
- * DS102: Remove unnecessary code created because of implicit returns
- * DS207: Consider shorter variations of null checks
- * Full docs: https://github.com/decaffeinate/decaffeinate/blob/master/docs/suggestions.md
- */
 const fs = require("fs");
 const express = require("express");
 const router = express.Router();
@@ -68,7 +61,7 @@ const render = function(res, data, title, summaryTxt, location) {
     location = "";
   }
   summaryTxt.searchRegion = location;
-  return res.render("page_regions", {
+  return res.send({
     // Call res.render for the map page
     data, // The map data
     summary_text: summaryTxt, // Summary of results
