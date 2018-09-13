@@ -1,0 +1,30 @@
+{
+  "name": "e-backend",
+  "version": "1.0.0",
+  "description": "Sentiment Analysis Backend ",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "Daniel Ale",
+  "license": "ISC",
+  "dependencies": {
+    "body-parser": "^1.18.3",
+    "cookie-parser": "^1.4.3",
+    "express": "^4.16.3",
+    "fetch-tweets": "^0.1.7",
+    "haven-entity-extraction": "git://github.com/Lissy93/haven-entity-extraction.git",
+    "haven-sentiment-analysis": "git://github.com/Lissy93/haven-sentiment-analysis.git",
+    "moment": "^2.22.2",
+    "mongoose": "^5.2.14",
+    "morgan": "^1.9.1",
+    "nairaland-scraper": "^1.0.2",
+    "place-lookup": "^1.0.1",
+    "remove-words": "^0.9.0",
+    "sentiment-analysis": "^0.1.2",
+    "serve-favicon": "^2.5.0"
+  },
+  "engines": {
+    "node": "8.11.3"
+  }
+}
