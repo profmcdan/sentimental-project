@@ -1,11 +1,3 @@
-/*
- * decaffeinate suggestions:
- * DS101: Remove unnecessary use of Array.from
- * DS102: Remove unnecessary code created because of implicit returns
- * Full docs: https://github.com/decaffeinate/decaffeinate/blob/master/docs/suggestions.md
- */
-
-// Require necessary modules, API keys and instantiate objects
 const express = require("express");
 const router = express.Router();
 const asyncTweets = require("../utils/async-tweets");
@@ -51,7 +43,7 @@ const formatResults = function(data) {
 router.get("/:query", function(req, res, next) {
   const searchTerms = req.params.query.split(",").splice(0, 4);
   return asyncTweets(searchTerms, results =>
-    res.render("page_comparer", {
+    res.send({
       // Render template
       title: "Comparer",
       pageNum: 10,
@@ -63,7 +55,7 @@ router.get("/:query", function(req, res, next) {
 
 // Main route - no search term
 router.get("/", (req, res, next) =>
-  res.render("page_comparer", {
+  res.send({
     // Render template
     title: "Comparer",
     pageNum: 10,

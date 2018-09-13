@@ -31,6 +31,7 @@ app.set("port", process.env.PORT || 8004);
 const mainRoute = require("./routes/home");
 const searchRoutes = require("./routes/search");
 const formattedRoutes = require("./routes/break-down");
+const compareRoutes = require("./routes/comparer");
 
 // Connect to db
 mongoose.connect(
@@ -46,6 +47,7 @@ mongoose.connect(
 app.use("/home", mainRoute);
 app.use("/search", searchRoutes);
 app.use("/format", formattedRoutes);
+app.use("/compare", compareRoutes);
 app.use("/text-tweets", require("./routes/text-tweet"));
 
 // Create home route

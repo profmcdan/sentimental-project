@@ -80,7 +80,7 @@ router.get("/:query", function(req, res) {
     getHpSentimentResults(tweetBody, function(hpResults) {
       const results = formatResultsForChart(hpResults);
       return res.send({
-        title: searchTerm + " results",
+        title: searchTerm + " Sentiment Trees",
         pageNum: -1,
         data: results,
         searchTerm
@@ -98,7 +98,7 @@ router.get("/", (req, res) =>
     return getHpSentimentResults(tweetBody, function(hpResults) {
       const results = formatResultsForChart(hpResults);
       return res.send({
-        title: "Break down results",
+        title: "Sentiment Trees",
         pageNum: -1,
         data: results,
         searchTerm: ""
