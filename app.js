@@ -76,7 +76,11 @@ app.use(function(err, req, res) {
 
 // Create home route
 app.get("/", (req, res) => {
-  res.render("home", { user: req.user });
+  res.send({
+    message: "Sentiment Analysis API Backend",
+    author: "Daniel Ale",
+    version: "1.0.0"
+  });
 });
 
 // NairaLand Scrapper
