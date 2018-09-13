@@ -46,6 +46,15 @@ app.use("/search", searchRoutes);
 app.use("/format", formattedRoutes);
 app.use("/text-tweets", require("./routes/text-tweet"));
 
+// Create home route
+app.get("/", (req, res) => {
+  res.send({
+    message: "Sentiment Analysis API Backend",
+    author: "Daniel Ale",
+    version: "1.0.0"
+  });
+});
+
 /* catch 404 and forward to error handler */
 app.use(function(req, res, next) {
   var err = new Error("Not Found");
@@ -71,15 +80,6 @@ app.use(function(err, req, res) {
   res.status(500).json({
     message: err.message,
     error: {}
-  });
-});
-
-// Create home route
-app.get("/", (req, res) => {
-  res.send({
-    message: "Sentiment Analysis API Backend",
-    author: "Daniel Ale",
-    version: "1.0.0"
   });
 });
 
