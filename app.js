@@ -37,6 +37,7 @@ const globeRoutes = require("./routes/globe");
 const hexagonRoutes = require("./routes/hexagons");
 const mapRoutes = require("./routes/map");
 const regionMapRoutes = require("./routes/region-map");
+const newsRoutes = require("./routes/news");
 
 // Connect to db
 mongoose.connect(
@@ -50,15 +51,16 @@ mongoose.connect(
 /* Specify which route files to use */
 // Route Setup
 app.use("/home", mainRoute);
-app.use("/search", searchRoutes);
-app.use("/format", formattedRoutes);
-app.use("/compare", compareRoutes);
-app.use("/entity", entityRoutes);
-app.use("/globe", globeRoutes);
-app.use("/hexagon", hexagonRoutes);
-app.use("/map", mapRoutes);
+app.use("/api/search", searchRoutes);
+app.use("/api/format", formattedRoutes);
+app.use("/api/compare", compareRoutes);
+app.use("/api/entity", entityRoutes);
+app.use("/api/globe", globeRoutes);
+app.use("/api/hexagon", hexagonRoutes);
+app.use("/api/map", mapRoutes);
+app.use("/api/news", newsRoutes);
 // app.use("/region", regionMapRoutes);
-app.use("/text-tweets", require("./routes/text-tweet"));
+app.use("/api/text-tweets", require("./routes/text-tweet"));
 
 // Create home route
 app.get("/", (req, res) => {
