@@ -25,11 +25,6 @@ app.use(bodyParser.urlencoded({ extended: false }));
 
 app.set("port", process.env.PORT || 8004);
 
-const mainRoute = require("./routes/home");
-const searchRoutes = require("./routes/search");
-const formattedRoutes = require("./routes/break-down");
-const newsRoutes = require("./routes/news");
-
 // Connect to db
 mongoose.connect(
   keys.mongodb.dbURI,
