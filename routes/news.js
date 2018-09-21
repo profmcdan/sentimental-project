@@ -22,8 +22,7 @@ router.get("/:keyword", (req, res) => {
       auth: keys.googleCustomSearch.apiKey
     })
     .then(results => {
-      console.log(results.data);
-      return res.json(results.data);
+      return res.json(results.data.items);
     })
     .catch(err => {
       return res.status(400).json(err);
