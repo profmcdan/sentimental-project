@@ -3,6 +3,7 @@ const keys = require("../config/keys");
 const { google } = require("googleapis");
 const customSearch = google.customsearch("v1");
 const newsAPIKey = require("../config/keys").newApiKey;
+const NewsAPI = require("newsapi");
 
 async function runSample(options) {
 	console.log(options);
@@ -31,12 +32,14 @@ router.get("/custom/:keyword", (req, res) => {
 });
 
 router.get("/:keyword", (req, res) => {
-	var url = `https://newsapi.org/v2/everything?q=${req.params
-		.keyword}&from=2018-11-15&sortBy=popularity&apiKey=${newsAPIKey}`;
-	var request = new Request(url);
-	fetch(request)
-		.then(function(response) {
-			return res.send(response.json());
+	const newsapi = new NewsAPI(newsAPIKey);
+
+	newsapi.v2
+		.topHeadlines({
+			q: req.params.keyword
+		})
+		.then((response) => {
+			return res.json(response);
 		})
 		.catch((err) => {
 			return res.status(400).json(err);
