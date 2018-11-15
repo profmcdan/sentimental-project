@@ -36,7 +36,26 @@ router.get("/:keyword", (req, res) => {
 
 	newsapi.v2
 		.everything({
-			q: req.params.keyword
+			q: req.params.keyword,
+			page: 5
+		})
+		.then((response) => {
+			return res.json(response);
+		})
+		.catch((err) => {
+			return res.status(400).json(err);
+		});
+});
+
+router.get("/:keyword/:from/:to", (req, res) => {
+	const newsapi = new NewsAPI(newsAPIKey);
+
+	newsapi.v2
+		.everything({
+			q: req.params.keyword,
+			from: req.params.from,
+			to: req.params.to,
+			page: 5
 		})
 		.then((response) => {
 			return res.json(response);
