@@ -36,7 +36,8 @@ router.get("/:keyword", (req, res) => {
 
 	newsapi.v2
 		.everything({
-			q: req.params.keyword
+			q: req.params.keyword,
+			country: "ng"
 		})
 		.then((response) => {
 			return res.json(response);
