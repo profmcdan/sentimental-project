@@ -5,6 +5,11 @@ const customSearch = google.customsearch("v1");
 const newsAPIKey = require("../config/keys").newApiKey;
 const NewsAPI = require("newsapi");
 
+const Sentiment = require("sentiment");
+const sentiment = new Sentiment();
+
+// var sentimentAnalysis = require("sentiment-analysis");
+
 async function runSample(options) {
 	console.log(options);
 	const res = await customSearch.cse.list({
@@ -33,6 +38,7 @@ router.get("/custom/:keyword", (req, res) => {
 
 router.get("/:keyword", (req, res) => {
 	const newsapi = new NewsAPI(newsAPIKey);
+	let newsArticles = [];
 
 	newsapi.v2
 		.everything({
@@ -40,7 +46,14 @@ router.get("/:keyword", (req, res) => {
 			page: 5
 		})
 		.then((response) => {
-			return res.json(response);
+			// Calculate the sentiment on each
+			response.articles.forEach((element) => {
+				const result = sentiment.analyze(element.title);
+				// const result = sentimentAnalysis(element.description);
+				newsArticles.push(result);
+			});
+
+			return res.json(newsArticles);
 		})
 		.catch((err) => {
 			return res.status(400).json(err);
@@ -49,6 +62,7 @@ router.get("/:keyword", (req, res) => {
 
 router.get("/:keyword/:from/:to", (req, res) => {
 	const newsapi = new NewsAPI(newsAPIKey);
+	let newsArticles = [];
 
 	newsapi.v2
 		.everything({
@@ -58,7 +72,12 @@ router.get("/:keyword/:from/:to", (req, res) => {
 			page: 5
 		})
 		.then((response) => {
-			return res.json(response);
+			response.articles.forEach((element) => {
+				const result = sentiment.analyze(element.title);
+				newsArticles.push(result);
+			});
+
+			return res.json(newsArticles);
 		})
 		.catch((err) => {
 			return res.status(400).json(err);

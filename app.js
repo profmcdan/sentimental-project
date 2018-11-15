@@ -38,15 +38,12 @@ const hexagonRoutes = require("./routes/hexagons");
 const mapRoutes = require("./routes/map");
 const regionMapRoutes = require("./routes/region-map");
 const newsRoutes = require("./routes/news");
+// const nairalandRoutes = require("./routes/nairaland");
 
 // Connect to db
-mongoose.connect(
-  keys.mongodb.dbURI,
-  { useNewUrlParser: true },
-  () => {
-    console.log("Database Connected");
-  }
-);
+mongoose.connect(keys.mongodb.dbURI, { useNewUrlParser: true }, () => {
+	console.log("Database Connected");
+});
 
 /* Specify which route files to use */
 // Route Setup
@@ -61,48 +58,44 @@ app.use("/api/map", mapRoutes);
 app.use("/api/news", newsRoutes);
 // app.use("/region", regionMapRoutes);
 app.use("/api/text-tweets", require("./routes/text-tweet"));
+// app.use("/api/nl", nairalandRoutes);
 
 // Create home route
 app.get("/", (req, res) => {
-  res.send({
-    message: "Sentiment Analysis API Backend",
-    author: "Daniel Ale",
-    version: "1.0.0"
-  });
+	res.send({
+		message: "Sentiment Analysis API Backend",
+		author: "Daniel Ale",
+		version: "1.0.0"
+	});
 });
 
 /* catch 404 and forward to error handler */
 app.use(function(req, res, next) {
-  var err = new Error("Not Found");
-  err.status = 404;
-  next(err);
+	var err = new Error("Not Found");
+	err.status = 404;
+	next(err);
 });
 
 /*-- error handlers -- */
 
 /* development error handler (will print stacktrace) */
 if (app.get("env") === "development") {
-  app.use(function(err, req, res) {
-    res.status(err.status || 500);
-    res.send({
-      message: err.message,
-      error: err
-    });
-  });
+	app.use(function(err, req, res) {
+		res.status(err.status || 500);
+		res.send({
+			message: err.message,
+			error: err
+		});
+	});
 }
 
 /* production error handler (no stacktraces leaked to user) */
 app.use(function(err, req, res) {
-  res.status(500).json({
-    message: err.message,
-    error: {}
-  });
+	res.status(500).json({
+		message: err.message,
+		error: {}
+	});
 });
-
-// NairaLand Scrapper
-const NlScraper = require("nairaland-scraper");
-
-const latest = new NlScraper();
 
 // latest.getScrapedData({ limit: 10 }, function(err, topics) {
 //   if (err) {
@@ -125,6 +118,6 @@ const latest = new NlScraper();
 
 // Listen to a port number
 app.listen(app.get("port"), () => {
-  console.log("Listening on port " + app.get("port"));
-  // console.log(sentimentAnalysis(words));
+	console.log("Listening on port " + app.get("port"));
+	// console.log(sentimentAnalysis(words));
 });
