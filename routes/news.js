@@ -35,7 +35,7 @@ router.get("/:keyword", (req, res) => {
 	const newsapi = new NewsAPI(newsAPIKey);
 
 	newsapi.v2
-		.topHeadlines({
+		.everything({
 			q: req.params.keyword
 		})
 		.then((response) => {
