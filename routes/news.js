@@ -43,7 +43,8 @@ router.get("/:keyword", (req, res) => {
 	newsapi.v2
 		.everything({
 			q: req.params.keyword,
-			page: 5
+			page: 5,
+			language: "en"
 		})
 		.then((response) => {
 			// Calculate the sentiment on each
@@ -69,7 +70,8 @@ router.get("/:keyword/:from/:to", (req, res) => {
 			q: req.params.keyword,
 			from: req.params.from,
 			to: req.params.to,
-			page: 5
+			page: 5,
+			language: "en"
 		})
 		.then((response) => {
 			response.articles.forEach((element) => {
