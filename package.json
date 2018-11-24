@@ -12,6 +12,7 @@
     "body-parser": "^1.18.3",
     "cookie-parser": "^1.4.3",
     "express": "^4.16.3",
+    "express-api-doc": "0.0.12",
     "fetch-tweets": "^0.1.7",
     "find-region-from-location": "git+https://github.com/Lissy93/find-region-from-location.git",
     "googleapis": "^33.0.0",
@@ -27,7 +28,8 @@
     "remove-words": "^0.9.0",
     "sentiment": "^5.0.1",
     "sentiment-analysis": "^0.1.2",
-    "serve-favicon": "^2.5.0"
+    "serve-favicon": "^2.5.0",
+    "swagger-ui-express": "^4.0.1"
   },
   "engines": {
     "node": "8.11.3"

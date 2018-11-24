@@ -47,9 +47,14 @@ router.get("/:keyword", (req, res) => {
 			language: "en"
 		})
 		.then((response) => {
+			// console.dir(response);
 			// Calculate the sentiment on each
 			response.articles.forEach((element) => {
 				const result = sentiment.analyze(element.title);
+				result.source = element.url;
+				result.publishedAt = element.publishedAt;
+				result.title = element.title;
+				result.description = element.description;
 				// const result = sentimentAnalysis(element.description);
 				newsArticles.push(result);
 			});
@@ -76,6 +81,10 @@ router.get("/:keyword/:from/:to", (req, res) => {
 		.then((response) => {
 			response.articles.forEach((element) => {
 				const result = sentiment.analyze(element.title);
+				result.source = element.url;
+				result.publishedAt = element.publishedAt;
+				result.title = element.title;
+				result.description = element.description;
 				newsArticles.push(result);
 			});
 
